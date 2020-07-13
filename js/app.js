@@ -49,6 +49,7 @@ function eventListeners() {
   // edit/delete questions
   questionList.addEventListener("click", function(event) {
     event.preventDefault();
+
     // delete question
     if (event.target.classList.contains("delete-flashcard")) {
       questionList.removeChild(event.target.parentElement.parentElement.parentElement);
@@ -56,12 +57,25 @@ function eventListeners() {
     // show/hide answer
     } else if (event.target.classList.contains("show-answer")) {
       event.target.nextElementSibling.classList.toggle("showItem");
+
+    // edit question
+    } else if (event.target.classList.contains("edit-flashcard")) {
+      let id = event.target.dataset.id;
+      // remove question from the DOM
+      questionList.removeChild(event.target.parentElement.parentElement.parentElement);
+      // show the question card
+      ui.showQuestion(questionCard);
+      // find the question by id
+      const editedQuestion = data.filter(function(item) {
+        return item.id === parseInt(id);
+      });
+
     }
-
-
   });
 
 };
+
+
 
 // ui constructor
 function UI() {};
@@ -89,7 +103,7 @@ UI.prototype.addQuestion = function(element, question) {
     <a href="#" id="delete-flashcard" class=" btn my-1 delete-flashcard text-uppercase">delete</a>
    </div>
  </div>`;
- element.appendChild(div);
+  element.appendChild(div);
 };
 
 // clear fields
@@ -97,7 +111,6 @@ UI.prototype.clearFields = function(questionInput, answerInput) {
   questionInput.value = "";
   answerInput.value = "";
 };
-
 
 // question constructor
 function Question(id, title, answer) {
