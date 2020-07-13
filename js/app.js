@@ -8,3 +8,24 @@
 // const questionList = document.getElementById("questions-list");
 // let data = [];
 // let id = 1;
+
+// even listeners
+function eventListeners() {
+
+}
+
+// ui constructor
+function UI() {
+
+}
+
+// question constructor
+function Question() {
+
+}
+
+// DOM event listener
+document.addEventListener("DOMContentLoaded", function() {
+  eventListeners();
+
+});
