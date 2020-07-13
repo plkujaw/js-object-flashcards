@@ -1,7 +1,4 @@
-
-
-
-// even listeners
+// event listeners
 function eventListeners() {
   const showBtn = document.getElementById("show-btn");
   const questionCard = document.querySelector(".question-card");
@@ -22,6 +19,10 @@ function eventListeners() {
     ui.showQuestion(questionCard);
   });
 
+  // hide add question form (add question)
+  closeBtn.addEventListener("click", function() {
+    ui.hideQuestion(questionCard);
+  });
 
 };
 
