@@ -41,6 +41,7 @@ function eventListeners() {
       question = new Question(id, questionValue, answerValue);
       data.push(question);
       id++;
+      ui.clearFields(questionInput, answerInput);
     }
   });
 
@@ -60,6 +61,13 @@ UI.prototype.showQuestion = function(element) {
 UI.prototype.hideQuestion = function(element) {
   element.classList.remove("showItem");
 };
+
+// clear fields
+UI.prototype.clearFields = function(questionInput, answerInput) {
+  questionInput.value = "";
+  answerInput.value = "";
+};
+
 
 // question constructor
 function Question(id, title, answer) {
