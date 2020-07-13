@@ -79,14 +79,12 @@ function eventListeners() {
       let remainingQuestions = data.filter(function(item) {
         return item.id !== parseInt(id);
       });
-      console.log(data);
-      console.log(remainingQuestions);
+      data = remainingQuestions;
+      questionInput.value = editedQuestion[0].title;
+      answerInput.value = editedQuestion[0].answer;
     }
   });
-
 };
-
-
 
 // ui constructor
 function UI() {};
@@ -130,7 +128,7 @@ function Question(id, title, answer) {
   this.answer = answer;
 };
 
-// DOM event listener
+// DOM event listener / load the app on load
 document.addEventListener("DOMContentLoaded", function() {
   eventListeners();
 });
