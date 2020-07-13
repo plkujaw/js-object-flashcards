@@ -52,7 +52,13 @@ function eventListeners() {
 
     // delete question
     if (event.target.classList.contains("delete-flashcard")) {
+      let id = event.target.dataset.id;
       questionList.removeChild(event.target.parentElement.parentElement.parentElement);
+      // rest of the questions
+      let remainingQuestions = data.filter(function(item) {
+        return item.id !== parseInt(id);
+      });
+      data = remainingQuestions;
 
     // show/hide answer
     } else if (event.target.classList.contains("show-answer")) {
@@ -69,7 +75,12 @@ function eventListeners() {
       const editedQuestion = data.filter(function(item) {
         return item.id === parseInt(id);
       });
-
+      // rest of the questions
+      let remainingQuestions = data.filter(function(item) {
+        return item.id !== parseInt(id);
+      });
+      console.log(data);
+      console.log(remainingQuestions);
     }
   });
 
@@ -100,7 +111,7 @@ UI.prototype.addQuestion = function(element, question) {
    <h5 class="answer mb-3">${question.answer}</h5>
    <div class="flashcard-btn d-flex justify-content-between">
     <a href="#" id="edit-flashcard" class=" btn my-1 edit-flashcard text-uppercase" data-id="${question.id}">edit</a>
-    <a href="#" id="delete-flashcard" class=" btn my-1 delete-flashcard text-uppercase">delete</a>
+    <a href="#" id="delete-flashcard" class=" btn my-1 delete-flashcard text-uppercase" data-id="${question.id}">delete</a>
    </div>
  </div>`;
   element.appendChild(div);
