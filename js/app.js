@@ -1,4 +1,4 @@
-// event listeners
+// event listeners/main functionality
 function eventListeners() {
   const showBtn = document.getElementById("show-btn");
   const questionCard = document.querySelector(".question-card");
@@ -37,8 +37,11 @@ function eventListeners() {
       setTimeout(function() {
         feedback.classList.remove("showItem", "alert-danger");
       }, 2000);
+    } else {
+      question = new Question(id, questionValue, answerValue);
+      data.push(question);
+      id++;
     }
-
   });
 
 };
@@ -59,8 +62,10 @@ UI.prototype.hideQuestion = function(element) {
 };
 
 // question constructor
-function Question() {
-
+function Question(id, title, answer) {
+  this.id = id;
+  this.title = title;
+  this.answer = answer;
 };
 
 // DOM event listener
