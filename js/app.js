@@ -46,6 +46,14 @@ function eventListeners() {
     }
   });
 
+  // edit/delete question
+  questionList.addEventListener("click", function(event) {
+    // delete
+    if (event.target.classList.contains("delete-flashcard")) {
+      questionList.removeChild(event.target.parentElement.parentElement.parentElement);
+    } 
+  });
+
 };
 
 // ui constructor
