@@ -24,6 +24,23 @@ function eventListeners() {
     ui.hideQuestion(questionCard);
   });
 
+  // add question
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const questionValue = questionInput.value;
+    const answerValue = answerInput.value;
+
+    if (!questionValue || !answerValue) {
+      feedback.classList.add("showItem", "alert-danger");
+      feedback.textContent = "cannot add empty values";
+
+      setTimeout(function() {
+        feedback.classList.remove("showItem", "alert-danger");
+      }, 2000);
+    }
+
+  });
+
 };
 
 // ui constructor
@@ -49,5 +66,4 @@ function Question() {
 // DOM event listener
 document.addEventListener("DOMContentLoaded", function() {
   eventListeners();
-
 });
